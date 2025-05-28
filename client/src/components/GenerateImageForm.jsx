@@ -135,7 +135,7 @@ const GenerateImageForm = ({
         </Body>
         <Action>
         <button style={{
-                backgroundColor: (!post.prompt || !post.author) ? "#ccc" : "#854CE6",
+                backgroundColor: (!post.prompt || !post.author) ? "#a27ce4" : "#854CE6",
                 cursor: (!post.prompt || !post.author) ? "not-allowed" : "pointer",
                 width: '100%',
                 height:'100%',
@@ -157,7 +157,7 @@ const GenerateImageForm = ({
                 ><AutoAwesome/> Generate Image</button>
 
         <button style={{
-                backgroundColor: (!post.prompt || !post.author) ? "#ccc" : "#4c60e6",
+                backgroundColor: (!post.prompt || !post.author) ? "#8290ea" : "#4c60e6",
                 cursor: (!post.prompt || !post.author) ? "not-allowed" : "pointer",
                 width: '100%',
                 height:'100%',
