@@ -4,6 +4,7 @@ import { AutoAwesome, CreateRounded,} from '@mui/icons-material'
 import { CreatePost, GenerateAiImage } from '../api/index.js'
 import { useNavigate } from 'react-router-dom'
 
+
 const Form = styled.div`
     flex: 1;
     display: flex;
@@ -149,18 +150,21 @@ const GenerateImageForm = ({
                 alignItems: 'center',
                 padding: '10px 5px',
                 }}
-                flex 
                 type='button'
                 loading={createPostLoading}
                 disabled={post.prompt ==="" || post.author === ""}
                 onClick={() => generateImageFun()}
                 ><AutoAwesome/> Generate Image</button>
 
-        <button style={{
+        <button
+            type="button"
+            disabled={!post.prompt || !post.author || !post.photo}
+            onClick={generatePostFun}
+            style={{
                 backgroundColor: (!post.prompt || !post.author) ? "#8290ea" : "#4c60e6",
                 cursor: (!post.prompt || !post.author) ? "not-allowed" : "pointer",
                 width: '100%',
-                height:'100%',
+                height: '100%',
                 borderRadius: '15px',
                 border: '2px solid #1530e4',
                 color: 'white',
@@ -170,12 +174,10 @@ const GenerateImageForm = ({
                 justifyContent: 'center',
                 alignItems: 'center',
                 padding: '10px 5px',
-                }}
-                type='button'
-                loading={createPostLoading}
-                disabled={!post.prompt || !post.author || !post.photo}
-                onClick={() => generatePostFun()}
-                ><CreateRounded/> Post Image</button>
+            }}
+            >
+            {createPostLoading ? "Posting..." : <><CreateRounded/> Post Image</>}
+        </button>
         </Action>
 
     </Form>

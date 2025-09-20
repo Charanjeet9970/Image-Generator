@@ -12,11 +12,6 @@ app.use(cors());
 app.use(express.json({limit: '100mb' }));
 app.use(express.urlencoded({limit: '100mb', extended: true }));
 
-app.use((err,req,res,next) => {
-    const status = err.status || 500;
-    const message = err.message || 'Internal Server Error';
-    res.status(status).json({ message, status,success: false });
-});
 
 app.use('/api/post', postRoutes);
 app.get('/', async (req, res) => {
@@ -24,6 +19,11 @@ app.get('/', async (req, res) => {
 });
 app.use('/api/generateImage', generateImageRoutes);
 
+app.use((err,req,res,next) => {
+    const status = err.status || 500;
+    const message = err.message || 'Internal Server Error';
+    res.status(status).json({ message, status,success: false });
+});
 const startServer = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI)
