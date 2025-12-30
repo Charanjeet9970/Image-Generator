@@ -29,7 +29,7 @@ export const generateAIImage = async (req, res) => {
     console.log("Order ID:", payload);
 
     // Wait for a few seconds to allow image generation to complete
-    await sleep(10000); // Adjust the delay as needed
+    await sleep(20000); // Adjust the delay as needed
     
     // Step 2: Check status (order-status requires the field to be exactly `orderId`)
     const statusResponse = await fetch(
